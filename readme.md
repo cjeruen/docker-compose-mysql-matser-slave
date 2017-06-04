@@ -31,7 +31,7 @@ mysql -h127.0.0.1 -P3310 -uroot -p
 ```
 
 ```
-a. 创建一个用户用户复制数据
+a. 创建一个用户用于 复制数据
 mysql> GRANT REPLICATION SLAVE ON *.* to 'hui'@'172.18.0.%' identified by 'hui';
 
 b. 查看一些主库的信息 File && Position
