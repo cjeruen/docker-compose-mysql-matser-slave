@@ -1,0 +1,56 @@
+version: '2'
+
+networks:
+  mysql:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1
+
+services:
+  m1:
+    build: ./m1
+    volumes:
+      - ./m1/db:/var/lib/mysql
+      - ./common/hosts:/etc/hosts:ro
+    networks:
+      mysql:
+        ipv4_address: 172.18.0.2
+    ports:
+      - "3310:3306"
+    hostname: m1
+    container_name: m1
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+
+  s1:
+    build: ./s1
+    volumes:
+      - ./s1/db:/var/lib/mysql
+      - ./common/hosts:/etc/hosts:ro
+    networks:
+      mysql:
+        ipv4_address: 172.18.0.3
+    ports:
+      - "3321:3306"
+    hostname: s1
+    container_name: s1
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+
+  s2:
+    build: ./s2
+    volumes:
+      - ./s2/db:/var/lib/mysql
+      - ./common/hosts:/etc/hosts:ro
+    networks:
+      mysql:
+        ipv4_address: 172.18.0.4
+    ports:
+      - "3322:3306"
+    hostname: s2
+    container_name: s2
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
