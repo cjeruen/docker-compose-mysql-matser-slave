@@ -34,7 +34,7 @@ mysql -h127.0.0.1 -P3310 -uroot -p
 a. 创建一个用户用户复制数据
 mysql> GRANT REPLICATION SLAVE ON *.* to 'hui'@'172.18.0.%' identified by 'hui';
 
-b. 查看一些主库的信息 File && Position
+b. 查看一些主库的信息 File && Position
 mysql> show master status\G
 *************************** 1. row ***************************
              File: mysql-bin.000003
@@ -47,7 +47,7 @@ Executed_Gtid_Set:
 ```
 
 
-### 2. 配置slave
+### 2. 配置slave
 
 
 ```
@@ -65,7 +65,7 @@ mysql -h127.0.0.1 -P3321 -uroot -p
 执行
 
 1. 
-change master to 
+mysql> change master to 
 master_host='m1',
 master_port=3306,
 master_user='hui',
