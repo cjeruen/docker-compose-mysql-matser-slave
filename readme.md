@@ -1,5 +1,5 @@
 
-# 使用 docker-composer 搭建 一个简单的 MySQL 主从
+# 使用 docker-compose 搭建 一个简单的 MySQL 主从
 
 ## 使用说明
 
